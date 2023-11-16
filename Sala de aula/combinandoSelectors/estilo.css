@@ -1,0 +1,72 @@
+h2{
+
+color: yellow;
+text-align: center;
+
+}
+
+h5{
+
+    color: #f0f00;
+    text-align: center;
+    
+    }
+
+.Roupas {
+
+color: blue;
+
+}
+
+.lista{
+
+color: orange;
+
+}
+
+.usada{
+
+color: violet;
+
+}
+
+.alimentos{
+
+color: aqua;
+
+}
+
+li{
+
+color: orange;
+
+}
+
+.moveis{
+
+color: blue;
+
+
+}
+
+
+.moveis > li{
+
+color: red;
+
+
+}
+
+.moveis > .usada{
+
+    color: rgb(7, 103, 71);
+    
+    
+    }
+
+    .tipoMaterial{
+
+ color: rgb(4, 30, 52);
+
+
+    }
