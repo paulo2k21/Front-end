@@ -5,7 +5,11 @@ background-color: blue;
 width: 120px;
 height: 120px;
 
-position: 30%;
+position: relative;
+
+left: 95px;
+top: 80px;
+
 
 }
 
@@ -23,17 +27,24 @@ position: 30%;
         background-color: #ff2200;
         width: 120px;
         height: 120px;
-    
+        position: absolute;
+        
         
         }
 
 #caixa4{
 
-            background-color: rgb(255, 47, 0);
-            width: 120px;
-            height: 120px;
-        
+            background-color: rgb(157, 255, 0);
+            width: 40px;
+        height: 40px;
+        position: relative;
+
+        left: 10px;
+        top: 10px;
             
+        
+
+
             }
 
 #caixa5{
@@ -41,15 +52,18 @@ position: 30%;
                 background-color: #ff0;
                 width: 120px;
                 height: 120px;
-            
+                position: fixed;
+
+                left: 356px;
+                 top: 8px;
                 
                 }
 
 #caixa6{
 
-                    background-color: rgb(0, 251, 255);
-                    width: 120px;
-                    height: 120px;
-                
+                    background-color: rgb(162, 0, 255);
+                    width: 400px;
+                    height: 400px;
+                    border-radius: 70%;
                     
                     }
