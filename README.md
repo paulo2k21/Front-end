@@ -4,7 +4,7 @@ Este repositório é dedicado ao desenvolvimento de projetos do Front End T3.
 
 ## Autor
 
-Nome Completo: Alan Prates dos Santos
+Nome Completo: Paulo Pereira Marques
 
 ## Descrição
 
