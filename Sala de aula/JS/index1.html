@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computadores</title>
+</head>
+<body>
+
+    <h1>Lista de Computadores</h1>
+    <ul id="computadores-lista"></ul>
+
+    <script>
+        class Computador {
+            constructor(marca, modelo, processador, ram) {
+                this.marca = marca;
+                this.modelo = modelo;
+                this.processador = processador;
+                this.ram = ram;
+            }
+
+            ligar() {
+                return `O computador ${this.modelo} está ligado.`;
+            }
+
+            desligar() {
+                return `O computador ${this.modelo} está desligado.`;
+            }
+        }
+
+        function objetoParaMap(computador) {
+            return new Map(Object.entries(computador));
+        }
+
+        function atualizarHTMLComMap(map) {
+            const lista = document.getElementById('computadores-lista');
+            
+            // Limpar a lista antes de adicionar os novos itens
+           // lista.innerHTML = '';
+
+            map.forEach((valor, chave) => {
+                const li = document.createElement('li');
+                li.textContent = `${chave}: ${valor}`;
+                lista.appendChild(li);
+            });
+        }
+
+        // Criar objetos da classe Computador
+        const computador1 = new Computador('Dell', 'Inspiron', 'Intel Core i5', '8GB');
+        const computador2 = new Computador('HP', 'Pavilion', 'AMD Ryzen 7', '16GB');
+        const computador3 = new Computador('Lenovo', 'ThinkPad', 'Intel Core i7', '12GB');
+
+        // Testar as funções com os objetos Computador
+        const mapComputador1 = objetoParaMap(computador1);
+        const mapComputador2 = objetoParaMap(computador2);
+        const mapComputador3 = objetoParaMap(computador3);
+
+        // Visualizar os resultados no HTML
+        atualizarHTMLComMap(mapComputador1);
+
+        atualizarHTMLComMap(mapComputador2);
+
+        atualizarHTMLComMap(mapComputador3);
+    </script>
+
+</body>
+</html>

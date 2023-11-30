@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Avião</title>
+</head>
+<body>
+
+    <h1>Formulário Avião</h1>
+
+    <form id="formularioAviao">
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" required>
+
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" required>
+
+        <label for="companhia">Companhia Aérea:</label>
+        <input type="text" id="companhia" required>
+
+        <label for="capacidade">Capacidade:</label>
+        <input type="number" id="capacidade" required>
+
+        <button type="button" onclick="criarAviao()">Criar Avião</button>
+    </form>
+
+    <div id="aviaoResultado"></div>
+
+    <script>
+        class Aviao {
+            constructor(marca, modelo, companhia, capacidade) {
+                this.marca = marca;
+                this.modelo = modelo;
+                this.companhia = companhia;
+                this.capacidade = capacidade;
+            }
+
+            display() {
+                return `Avião: ${this.marca} ${this.modelo}, Companhia: ${this.companhia}, Capacidade: ${this.capacidade} passageiros.`;
+            }
+        }
+
+        function criarAviao() {
+            const marca = document.getElementById('marca').value;
+            const modelo = document.getElementById('modelo').value;
+            const companhia = document.getElementById('companhia').value;
+            const capacidade = document.getElementById('capacidade').value;
+
+            const novoAviao = new Aviao(marca, modelo, companhia, capacidade);
+
+            exibirResultado(novoAviao);
+        }
+
+        function exibirResultado(aviao) {
+            const divResultado = document.getElementById('aviaoResultado');
+            divResultado.textContent = aviao.display();
+        }
+    </script>
+
+</body>
+</html>

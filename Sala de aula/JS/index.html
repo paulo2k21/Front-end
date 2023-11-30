@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Tarefas</title>
+</head>
+<body>
+
+    <h1>Gerenciador de Tarefas</h1>
+
+    <form id="formTarefa">
+        <label for="tarefa">Tarefa:</label>
+        <input type="text" id="tarefa" required>
+        <button type="button" onclick="adicionarTarefa()">Adicionar Tarefa</button>
+    </form>
+
+    <ul id="listaTarefas"></ul>
+
+    <script>
+        // Classe Tarefa
+        class Tarefa {
+            constructor(nome) {
+                this.nome = nome;
+            }
+        }
+
+        // Função para adicionar tarefa no DOM
+        function adicionaTarefaDOM(tarefa) {
+            const listaTarefas = document.getElementById('listaTarefas');
+            const li = document.createElement('li');
+            li.textContent = tarefa.nome;
+            listaTarefas.appendChild(li);
+        }
+
+        // Função para adicionar tarefa no localStorage
+        function adicionaTarefaNoStorage(tarefa) {
+            let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+            tarefas.push(tarefa);
+            localStorage.setItem('tarefas', JSON.stringify(tarefas));
+        }
+
+        // Função para limpar campo de tarefa
+        function limparCampoTarefa() {
+            document.getElementById('tarefa').value = '';
+        }
+
+        // Função chamada ao clicar no botão Adicionar Tarefa
+        function adicionarTarefa() {
+            const nomeTarefa = document.getElementById('tarefa').value;
+
+            if (nomeTarefa.trim() !== '') {
+                const novaTarefa = new Tarefa(nomeTarefa);
+
+                adicionaTarefaDOM(novaTarefa);
+                adicionaTarefaNoStorage(novaTarefa);
+                limparCampoTarefa();
+            } else {
+                alert('Por favor, insira uma tarefa válida.');
+            }
+        }
+
+        // Carregar tarefas do localStorage ao carregar a página
+        window.onload = function() {
+            let tarefas = JSON.parse(localStorage.getItem('tarefas')) || [];
+            tarefas.forEach(tarefa => {
+                adicionaTarefaDOM(tarefa);
+            });
+        };
+    </script>
+
+</body>
+</html>
