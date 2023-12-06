@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <title>Roteiros Turísticos - Formulário</title>
+
+    <!-- Links para CSS e outras meta informações -->
+    <link rel="stylesheet" href="formulario.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Seção de formulário -->
+    <h2>Novo Pacote Turístico</h2>
+    <form id="novoPacote">
+        <label for="nomeDestino">Destino:</label>
+        <input type="text" id="nomeDestino" required><br><br>
+
+        <label for="urlImagem">URL da Imagem:</label>
+        <input type="text" id="urlImagem" required><br><br>
+
+        <label for="itensInclusos">Itens Inclusos:</label>
+        <textarea id="itensInclusos" required></textarea><br><br>
+
+        <label for="preco">Preço:</label>
+        <input type="text" id="preco" required><br><br>
+
+        <label for="observacoes">Observações:</label>
+        <textarea id="observacoes" required></textarea><br><br>
+
+        <label for="parcelamento">Parcelamento:</label>
+        <input type="text" id="parcelamento" required><br><br>
+
+        <button type="submit">Inserir</button>
+    </form>
+
+    <hr/>
+
+    <!-- Lista de pacotes turísticos -->
+    <div class="container-destinos">
+        <!-- Conteúdo atual de roteiros-viagens -->
+    </div>
+
+    <!-- Script para manipulação do DOM -->
+    <script src="script2.js"></script>
+</body>
+</html>
