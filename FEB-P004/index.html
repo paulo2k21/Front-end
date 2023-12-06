@@ -1,62 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <title>Roteiros Turísticos</title>
-    <link rel="stylesheet" href="estilo.css">
-    <link rel="stylesheet" href="botao.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    
-    <div class="cabecalho">
-        <header></header>
-    </div>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agência de Turismo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="destinos-container">
+      <div class="destino">
+        <img src="img/salvador.jpeg" alt="Destino Salvador" />
+        <div class="destino-info">
+          <h2>Salvador</h2>
+          <p>✓Áereo ida e volta</p>
+          <p>✓03 diárias</p>
+          <p>✓Café da Manhã</p>
+          <h1>R$670,00</h1>
+          <p>Taxas inclusas <br>Em até 10x sem juros
+          </p>
+          <button class="comprar-btn" onclick="iniciarAnimacao()">Comprar</button>
+        </div>
+      </div>
 
-</head>
-<body>
-    <div class="container-destinos">
-        <div class="roteiros-viagens">
-            <img src="./assets/imgs/salvador.jpg" class="postal">
-            <div class="roteiro-destino">Salvador</div>
-                <ul class="roteiro-incluso">
-                    <li>Aéreo ida e volta</li>
-                    <li>03 diárias</li>
-                    <li>Café da Manhã</li>
-                </ul>
-            <div class="roteiro-preco">R$ 670,00</div>
-            <div class="roteiro-obs">Taxas Inclusas</div>
-            <div class="roteiro-parcelamento">Em até 10x sem Juros</div>
-            <button class="roteiro-comprar">Comprar</button>
-          
+      <div class="destino">
+        <img src="img/praia-jericoacoara-brasil.jpg" alt="Destino Fortaleza" />
+        <div class="destino-info">
+          <h2>Fortaleza</h2>
+          <p>✓Áereo ida e volta</p>
+          <p>✓06 diárias</p>
+          <p>✓Café da Manhã</p>
+          <h1>R$1513,00</h1>
+          <p>Taxas inclusas <br>Em até 10x sem juros
+          </p>
+          <button class="comprar-btn" onclick="iniciarAnimacao()">Comprar</button>
         </div>
-        <div class="roteiros-viagens">
-            <img src="./assets/imgs/fortaleza.jpg">
-            <div class="roteiro-destino">Fortaleza</div>
-            <ul class="roteiro-incluso">
-               <li>Aéreo ida e volta</li>
-               <li>06 diárias</li>
-               <li>Café da Manhã</li>
-            </ul>
-            <div class="roteiro-preco">R$ 1513,00</div>
-            <div class="roteiro-obs">Taxas Inclusas</div>
-            <div class="roteiro-parcelamento">Em até 10x sem Juros</div>
-            <button class="roteiro-comprar">Comprar</button>
-            
+      </div>
+
+      <div class="destino">
+        <img src="img/campinas.webp" alt="Destino Campinas" />
+        <div class="destino-info">
+          <h2>Campinas</h2>
+          <p>✓Áereo ida e volta</p>
+          <p>✓04 diárias</p>
+          <p>✓Café da Manhã</p>
+          <h1>R$900,00</h1>
+          <p>Taxas inclusas <br>Em até 10x sem juros
+          </p>
+          <button class="comprar-btn" onclick="iniciarAnimacao()">Comprar</button>
         </div>
-        <div class="roteiros-viagens">
-            <img src="./assets/imgs/campinas.jpg">
-            <div class="roteiro-destino">Campinas</div>
-            <ul class="roteiro-incluso">
-                <li>Aéreo ida e volta</li>
-                <li>04 diárias</li>
-                <li>Café da Manhã</li>
-            </ul>
-            <div class="roteiro-preco">R$ 900,00</div>
-            <div class="roteiro-obs">Taxas Inclusas</div>
-            <div class="roteiro-parcelamento">Em até 10x sem Juros</div>
-            <button class="roteiro-comprar">Comprar</button>
-           
-        </div>
-        <script src="script.js"></script>        
-</body>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
