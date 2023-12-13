@@ -1,0 +1,239 @@
+/* Reset de estilos padrão para todos os elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos para o cabeçalho */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #4ee81f;
+    padding: 1.875rem;
+}
+
+/* Estilos para a imagem no cabeçalho */
+.header img {
+    width: 5.625rem;
+}
+
+/* Espaçamento entre o cabeçalho e o conteúdo principal */
+.main {
+    margin-top: 1.875rem;
+}
+
+/* Estilos para as seções */
+.sections-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que as divs fiquem em linha em telas menores */
+    gap: 1rem;
+    max-width: 1175px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.menu, .news, .highlight, .services, .results {
+    border: 2px solid rgba(0, 0, 0, 0.23);
+    padding: 0.5rem;
+    flex: 1; /* Ocupar espaço igual entre as seções */
+    margin-bottom: 1rem; /* Adicionado para espaçamento entre as seções */
+}
+
+/* Estilos para cabeçalhos em seções */
+.menu > header, .news > header, .highlight > header, .services > header, .results > header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.23);
+    margin-bottom: 0.5rem;
+}
+
+/* Estilos para listas em seções */
+.menu > ul, .news > ul, .highlight > ul, .services > ul, .results > ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+}
+
+/* Estilos para itens de lista */
+li {
+    list-style: none;
+    margin-bottom: 0.2rem;
+}
+
+/* Estilos específicos para a seção de destaque */
+.highlight ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.highlight img {
+    width: 6.25rem;
+}
+
+/* Estilos para o rodapé fixo */
+.footer {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1175px;
+    background-color: #1aac4b;
+    padding: 8px;
+    bottom: 0;
+}
+
+/* Media queries para tornar o layout responsivo */
+@media screen and (max-width: 768px) {
+    .sections-container {
+        flex-direction: column; /* Empilhar as seções em telas menores */
+    }
+
+    .menu, .news, .highlight, .services, .results {
+        width: 100%; /* Ocupar largura total em telas menores */
+    }
+}
+
+/* Media queries para desktop (a partir de 1024px) */
+@media screen and (min-width: 1024px) {
+    .services, .results {
+        width: 48%; /* Dividir o espaço entre serviços e resultados */
+        margin-right: 1%; /* Adicionado espaçamento entre as divs */
+    }
+
+    .results {
+        margin-right: 0; /* Remover margem direita da última div para evitar quebrar a linha */
+    }
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #8DC63F; /* Green background color */
+    font-family: 'Roboto', sans-serif;
+}
+
+#geral {
+    font-size: 14px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #B4E189; /* Light green background color */
+}
+
+#logo {
+    background: url('/FEB-P002/img/uesc.jpg') no-repeat center center;
+    background-size: cover;
+    height: 185px;
+}
+
+#navegacao-local-meio {
+    width: 25%;
+    float: left;
+    overflow: hidden;
+    background-color: #B4E189; /* Light green background color */
+    margin: 14px 0 4px 10px;
+    font-size: 12px;
+}
+
+#navegacao-local-meio ul {
+    margin: 23px 0 0 -16px;
+    padding: 0;
+    clear: left;
+    width: 100%;
+    background-color: #B4E189; /* Light green background color */
+}
+
+#navegacao-local-meio li {
+    list-style-type: none;
+}
+
+#navegacao-local-meio li li {
+    font-size: 11px;
+    font-style: italic;
+    text-indent: 3px;
+}
+
+#navegacao-local-meio a {
+    background-color: #8DC63F; /* Green background color */
+    display: block;
+    width: 100%;
+    color: #333333;
+    text-decoration: none;
+    padding: 7px 0;
+    margin: 1px 0;
+}
+
+h2 {
+    margin: 0;
+    font-size: 18px;
+    height: auto;
+    padding: 10px;
+}
+
+#quadro-noticias {
+    margin-bottom: 20px;
+}
+
+#lista-noticias {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#lista-noticias li {
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+#quadro-destaque-nasa {
+    margin-bottom: 20px;
+}
+
+#destaque-nasa {
+    font-size: 14px;
+    color: #333;
+}
+
+#conteudo-interno {
+    float: left;
+    margin: 33px 0 10px 5px;
+    width: 690px;
+    min-height: 400px;
+    _height: 400px;
+    background-color: #FFFFFF; /* White background color */
+    border: 1px solid #C5C4C4;
+    text-align: justify;
+    padding: 2px 10px 12px;
+}
+
+#conteudo-direita object {
+    display: block;
+}
+
+#conteudo-esquerda,
+#conteudo-direita {
+    float: left;
+    width: 360px;
+    margin: 0 0 6px 0;
+}
+
+.boxIndex {
+    background-color: #FFFFFF; /* White background color */
+    border: solid 1px #CCCCCC;
+    margin: 33px 5px 3px;
+    padding: 3px 10px 10px;
+}
+
+#rodape {
+    color: #FFFFFF;
+    font-size: 12px;
+    text-align: center;
+    clear: both;
+    padding: 20px 0;
+    background-color: #8DC63F; /* Green background color */
+}
