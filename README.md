@@ -8,4 +8,4 @@ Nome Completo: Paulo Pereira Marques
 
 ## Descrição
 
-Este repositório é exclusivo p/ projetos Front End T3.
+Este repositório é exclusivo p/ projetos Front End Turma 3.
