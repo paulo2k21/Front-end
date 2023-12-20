@@ -1,0 +1,48 @@
+<div id="geral">
+  <div id="logo"></div>
+  <div id="conteudo">
+    <div id="navegacao-local-meio">
+      <ul>
+        <li><a href="#">Centros e Grupos de Pesquisa</a></li>
+        <li><a href="#">Internacional</a></li>
+        <li><a href="#">Laboratórios</a></li>
+        <li><a href="#">Mapa da Uesc</a></li>
+        <li><a href="#">Núcleos</a></li>
+        <li><a href="#">Projetos</a></li>
+        <li><a href="#">PROTOCOLO DIGITAL</a></li>
+      </ul>
+    </div>
+    <div id="conteudo-index">
+      <div id="conteudo-esquerda">
+        <div class="boxIndex" id="quadro-noticias">
+          <h2>Notícias</h2>
+          <div class="barra-titulo-interno"></div>
+          <ul id="lista-noticias">
+            <li *ngFor="let noticia of noticias">{{ noticia.title }}</li>
+          </ul>
+        </div>
+        <div class="boxIndex" id="quadro-servicos">
+          <h2>Serviços</h2>
+          <div class="barra-titulo-interno"></div>
+          <p id="previsao-tempo">{{ previsaoTempo }}</p>
+        </div>
+      </div>
+      <div id="conteudo-direita">
+        <!-- Adicione a parte do conteúdo da direita aqui -->
+        <div class="boxObject">
+          <section class="slide"></section>
+        </div>
+        <div class="boxIndex" id="quadro-destaque-nasa">
+          <h2>Destaque da NASA</h2>
+          <div class="barra-titulo-interno">
+            <p><strong>Informações de destaque da NASA<br /></strong></p>
+          </div>
+          <p id="destaque-nasa">{{ destaqueNasa }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="rodape" style="text-align: center">
+    UNIVERSIDADE ESTADUAL DE SANTA CRUZ<br />
+  </div>
+</div>
