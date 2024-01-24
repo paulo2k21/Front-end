@@ -1,0 +1,14 @@
+
+<div>
+  <input [(ngModel)]="term" placeholder="Digite o termo de busca">
+  <button (click)="search()"> <!-- Atualize esta linha -->
+    <i class="material-icons">search</i> Pesquisar
+  </button>
+</div>
+
+<div *ngFor="let result of results">
+  <h2>{{ result.title }}</h2>
+  <p [innerHTML]="result.snippet"></p>
+  <a href="https://pt.wikipedia.org/?curid={{ result.pageid }}">Leia mais...</a>
+</div>
+
