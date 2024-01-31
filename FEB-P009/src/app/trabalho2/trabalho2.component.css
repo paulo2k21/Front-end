@@ -1,0 +1,115 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #E1E1E1;
+    font-family: 'Roboto', sans-serif;
+}
+
+#geral {
+    font-size: 11px !important;
+    width: 950px;
+    margin-top: 80px;
+    padding: 0;
+    background-color: #F4F4F4;
+}
+
+#logo {
+    background: url('./img/uesc.jpg') no-repeat;
+    height: 185px;
+
+}
+
+#navegacao-local-meio {
+    width: 215px;
+    float: left;
+    clear: left;
+    overflow: hidden;
+    background-color: #F4F4F4;
+    margin: 14px 0 4px 10px;
+    font-size: 11px;
+}
+
+#navegacao-local-meio ul {
+    margin: 23px 0 0 -16px;
+    padding: 0;
+    clear: left;
+    width: 226px;
+    background-color: #F4F4F4;
+}
+
+#navegacao-local-meio li {
+    list-style-type: none;
+}
+
+#navegacao-local-meio li li {
+    font-size: 10px;
+    font-style: italic;
+    text-indent: 3px;
+}
+
+#navegacao-local-meio a {
+    background-color: #FFF;
+    display: block;
+    width: 200px;
+    color: #333333;
+    text-decoration: none;
+    padding: 7px 0 7px 10px;
+    margin: 1px 2px 1px 16px;
+}
+
+h2 {
+    margin: -24px 0 0;
+    position: relative;
+    float: left;
+    font-size: 13px;
+    height: 14px;
+    color: #FFF;
+    clear: right;
+    padding: 3px 10px;
+    background-color: #1fc0f6;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+#conteudo-interno {
+    float: left;
+    margin: 33px 0 10px 5px;
+    width: 690px;
+    min-height: 400px;
+    _height: 400px;
+    background-color: #FFFFFF;
+    border: 1px solid #C5C4C4;
+    text-align: justify;
+    padding: 2px 10px 12px;
+}
+
+#conteudo-direita object {
+    display: block;
+}
+
+#conteudo-esquerda,
+#conteudo-direita {
+    float: left;
+    width: 360px;
+    margin: 0 0 6px 0;
+}
+
+.boxIndex {
+    background-color: #FFFFFF;
+    border: solid 1px #CCCCCC;
+    margin: 33px 5px 3px;
+    padding: 3px 10px 10px;
+}
+
+#rodape {
+    color: #FFFFFF;
+    font-size: 10px;
+    text-align: left;
+    display: block;
+    clear: both;
+    width: 930px;
+    height: 74px;
+    padding: 20px 10px;
+    background-color: #0000a4;
+}

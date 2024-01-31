@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Agência de Turismo</title>
+  <link rel="stylesheet" href="/Aula04/css/style.css" />
+</head>
+
+<body>
+  <div class="destinos-container">
+  </div>
+  <hr />
+  <div class="formulario-container">
+    <form id="formulario">
+      <label for="destino">Destino:</label>
+      <input type="text" id="destino" name="destino" required />
+
+      <label for="imagem">URL da Imagem:</label>
+      <input type="text" id="imagem" name="imagem" required />
+
+      <label for="preco">Preço:</label>
+      <input type="text" id="preco" name="preco" required />
+
+      <label for="aereo">Áereo ida e volta:</label>
+      <input type="text" id="aereo" name="aereo" required />
+
+      <label for="diarias">Número de Diárias:</label>
+      <input type="text" id="diarias" name="diarias" required />
+
+      <label for="cafeManha">Café da Manhã:</label>
+      <input type="text" id="cafeManha" name="cafeManha" required />
+
+      <label for="taxas">Taxas Inclusas:</label>
+      <input type="checkbox" id="taxas" name="taxas" />
+
+      <label for="formaPagamento">Forma de Pagamento:</label>
+      <input type="text" id="formaPagamento" name="formaPagamento" required />
+
+      <button type="button" onclick="inserirDestino()">Inserir</button>
+    </form>
+  </div>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
