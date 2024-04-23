@@ -1,0 +1,91 @@
+<div class="container">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+    </a>
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a routerLink="/dashboard" class="nav-link px-2 link-dark">Início</a></li>
+      <li><a routerLink="/cadastro-suino" class="nav-link px-2 link-dark">Cadastro de Suínos</a></li>
+      <li><a routerLink="/cadastro-sessao" class="nav-link px-2 link-dark">Cadastro de Sessão</a></li>
+      <li><a routerLink="/listagem-suinos" class="nav-link px-2 link-dark">Listar Suínos</a></li>
+      <li><a routerLink="/controle-peso" class="nav-link px-2 link-dark">Gráfico Animal</a></li>      
+    </ul>
+    <div class="col-md-3 text-end">
+      <button type="button" class="btn bg-info me-2" (click)="logOut()">Sair</button>
+    </div>
+  </header>
+  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <div *ngIf="userName">
+
+    </div>
+  </div>
+  <h2>Cadastro de Sessão</h2>
+  <form (ngSubmit)="cadastrarSessao()">
+    <div class="mb-3">
+      <label for="dataSessao" class="form-label">Data da Sessão:</label>
+      <input type="date" class="form-control" id="dataSessao" [(ngModel)]="dataSessao" name="dataSessao" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="descricao" class="form-label">Descrição:</label>
+      <textarea class="form-control" id="descricao" [(ngModel)]="descricao" name="descricao" required></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="brincoAnimal" class="form-label">Ver lista de Brinco Animais:</label>
+      <select>
+        <option *ngFor="let brinco of brincosDisponiveis">{{ brinco }}</option>
+      </select>
+      <br>
+    </div>
+    <div class="mb-3">
+      <label for="brincoAnimal" class="form-label">Digite o Brinco do Animal:</label>
+      <input type="text" class="form-control" id="brincoAnimal" [(ngModel)]="brincoAnimal" name="brincoAnimal">
+      <br>
+      <button type="button" class="btn bg-info" (click)="adicionarAnimal()">Adicionar</button>
+      <ul class="list-group mt-2">
+        <li class="list-group-item" *ngFor="let animal of listaAnimais; let i = index">
+          {{ animal }} <button type="button" class="btn btn-danger btn-sm" (click)="removerAnimal(i)">Remover</button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="mb-3">
+      <label for="atividadePlanejada" class="form-label">Atividades Planejadas:</label>
+      <input type="text" class="form-control" id="atividadePlanejada" [(ngModel)]="atividadePlanejada" name="atividadePlanejada">
+      <br>
+      <button type="button" class="btn bg-info" (click)="adicionarAtividade()">Adicionar</button>
+      <ul class="list-group mt-2">
+        <li class="list-group-item" *ngFor="let atividade of atividadesPlanejadas; let i = index">
+          {{ atividade }} <button type="button" class="btn btn-danger btn-sm" (click)="removerAtividade(i)">Remover</button>
+        </li>
+      </ul>
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-success">Cadastrar Sessão</button>
+  </form>
+
+  <div *ngIf="cadastroSucesso" class="alert alert-success mt-3" role="alert">
+    Sessão cadastrada com sucesso!
+  </div>
+
+  <br>
+  <h2>Histórico de Sessões</h2>
+  <!-- Lista de sessões cadastradas -->
+  <ul>
+    <li *ngFor="let sessao of sessoesPaginaAtual">
+      Data da Sessão: {{ sessao.dataSessao }}<br>
+      Descrição: {{ sessao.descricao }}<br>
+      Brinco Animal: {{ sessao.animais ? sessao.animais.join(', ') : 'Nenhum animal cadastrado' }}<br>
+      Atividades Planejadas: {{ sessao.atividadesPlanejadas ? sessao.atividadesPlanejadas.join(', ') : 'Nenhuma atividade planejada' }}<br>
+      <hr>
+    </li>
+  </ul>
+
+  <!-- Paginação -->
+  <div class="pagination">
+    <button class="btn bg-info" (click)="paginaAnterior()" [disabled]="paginaAtual === 1">Anterior</button>
+    <button class="btn bg-info" (click)="proximaPagina()" [disabled]="paginaAtual === paginasTotais">Próxima</button>
+  </div>
+  <br>
+</div>

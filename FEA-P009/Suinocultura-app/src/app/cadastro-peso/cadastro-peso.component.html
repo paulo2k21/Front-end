@@ -1,0 +1,18 @@
+<h2>Cadastro de Peso</h2>
+<form [formGroup]="pesoForm" (ngSubmit)="submitForm()">
+  <div>
+    <label for="brincoAnimal">Brinco do Animal:</label>
+    <select formControlName="brincoAnimal" id="brincoAnimal">
+      <!-- Opções de brinco do animal obtidas do banco de dados -->
+    </select>
+  </div>
+  <div>
+    <label for="dataPesagem">Data da Pesagem:</label>
+    <input type="date" formControlName="dataPesagem" id="dataPesagem">
+  </div>
+  <div>
+    <label for="pesoKg">Peso em Kg:</label>
+    <input type="number" formControlName="pesoKg" id="pesoKg">
+  </div>
+  <button type="submit">Cadastrar</button>
+</form>

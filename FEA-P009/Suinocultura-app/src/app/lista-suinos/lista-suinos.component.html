@@ -1,0 +1,226 @@
+<div class="container">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+    </a>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a routerLink="/dashboard" class="nav-link px-2 link-dark">Início</a></li>
+      <li><a routerLink="/cadastro-suino" class="nav-link px-2 link-dark">Cadastro de Suínos</a></li>
+      <li><a routerLink="/cadastro-sessao" class="nav-link px-2 link-dark">Cadastro de Sessão</a></li>
+      <li><a routerLink="/listagem-suinos" class="nav-link px-2 link-dark">Listar Suínos</a></li>
+      <li><a routerLink="/controle-peso" class="nav-link px-2 link-dark">Gráfico Animal</a></li>
+
+    </ul>
+
+    <div class="col-md-3 text-end">
+      <button type="button" class="btn bg-info me-2" (click)="logOut()">Sair</button>
+    </div>
+  </header>
+  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <div *ngIf="userData">
+    </div>
+    <h2>Listagem de Suínos</h2>
+
+    <div class="mb-3">
+      <label for="filtroBrincoPai" class="form-label">Filtrar por brinco do pai:</label>
+      <input type="text" class="form-control" id="filtroBrincoPai" [(ngModel)]="filtroBrincoPai">
+    </div>
+
+    <div class="table-responsive">
+      <div class="scrollable-table">
+        <p class="text-center d-block d-sm-none">Para uma melhor visualização, gire o dispositivo ou utilize um dispositivo com uma tela maior.</p>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Brinco do Animal</th>
+            <th>Brinco do Pai</th>
+            <th>Brinco da Mãe</th>
+            <th>Data de Nascimento</th>
+            <th>Data de Saída</th>
+            <th>Status</th>
+            <th>Sexo</th>
+            <th>Peso (Kg)</th>
+            <th>Data de Pesagem</th>
+            <th>Vacinação Raiva</th>
+            <th>Vacinação Rinite Atrófica</th>
+            <th>Banho</th>
+            <th>Observação</th>
+            <th>Ações</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let suino of suinos | filterSuinos:filtroBrincoPai">
+            <td>{{ suino.brincoAnimal }}</td>
+            <td>{{ suino.brincoPai }}</td>
+            <td>{{ suino.brincoMae }}</td>
+            <td>{{ suino.dataNascimento | date }}</td>
+            <td>{{ suino.dataSaida | date }}</td>
+            <td>{{ suino.status }}</td>
+            <td>{{ suino.sexo }}</td>
+            <td>
+              <ul>
+                <li *ngFor="let peso of suino.pesos">{{ peso.pesoKg }}</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li *ngFor="let peso of suino.pesos">{{ peso.dataPesagem | date }}</li>
+              </ul>
+            </td>
+            <!-- Adicionando as novas colunas -->
+            <td>{{ suino.vacinacaoRaiva | date }}</td>
+            <td>{{ suino.vacinacaoRiniteAtrofica | date }}</td>
+            <td>{{ suino.banho | date }}</td>
+            <td>{{ suino.observacao }}</td>
+            <td>
+              <button class="btn bg-info me-2" (click)="editarSuino(suino)">Editar</button>
+              <button class="btn btn-danger" (click)="deletarSuino(suino)">Deletar</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+
+
+
+    <!-- Formulário de Edição -->
+    <div *ngIf="suinoSelecionado">
+      <h2>Editar Suíno</h2>
+      <form>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="brincoAnimalEdit" class="form-label">Brinco do animal:</label>
+              <input type="number" class="form-control" id="brincoAnimalEdit" name="brincoAnimalEdit" [(ngModel)]="suinoSelecionado.brincoAnimal">
+            </div>
+            <div class="mb-3">
+              <label for="brincoPaiEdit" class="form-label">Brinco do pai:</label>
+              <input type="number" class="form-control" id="brincoPaiEdit" name="brincoPaiEdit" [(ngModel)]="suinoSelecionado.brincoPai">
+            </div>
+            <div class="mb-3">
+              <label for="brincoMaeEdit" class="form-label">Brinco da mãe:</label>
+              <input type="number" class="form-control" id="brincoMaeEdit" name="brincoMaeEdit" [(ngModel)]="suinoSelecionado.brincoMae">
+            </div>
+            <div class="mb-3">
+              <label for="vacinacaoRaivaEdit" class="form-label">Vacinação Raiva:</label>
+              <input type="date" class="form-control" id="vacinacaoRaivaEdit" name="vacinacaoRaivaEdit" [(ngModel)]="suinoSelecionado.vacinacaoRaiva">
+            </div>
+            <div class="mb-3">
+              <label for="vacinacaoRiniteAtroficaEdit" class="form-label">Vacinação Rinite Atrófica:</label>
+              <input type="date" class="form-control" id="vacinacaoRiniteAtroficaEdit" name="vacinacaoRiniteAtroficaEdit" [(ngModel)]="suinoSelecionado.vacinacaoRiniteAtrofica">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="dataNascimentoEdit" class="form-label">Data de Nascimento:</label>
+              <input type="date" class="form-control" id="dataNascimentoEdit" name="dataNascimentoEdit" [(ngModel)]="suinoSelecionado.dataNascimento">
+            </div>
+            <div class="mb-3">
+              <label for="dataSaidaEdit" class="form-label">Data da saída:</label>
+              <input type="date" class="form-control" id="dataSaidaEdit" name="dataSaidaEdit" [(ngModel)]="suinoSelecionado.dataSaida">
+            </div>
+            <div class="mb-3">
+              <label for="statusEdit" class="form-label">Status:</label>
+              <select id="statusEdit" class="form-select" name="statusEdit" [(ngModel)]="suinoSelecionado.status">
+                <option value="ativo">Ativo</option>
+                <option value="vendido">Vendido</option>
+                <option value="morto">Morto</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="sexoEdit" class="form-label">Sexo:</label>
+              <select id="sexoEdit" class="form-select" name="sexoEdit" [(ngModel)]="suinoSelecionado.sexo">
+                <option value="M">Macho</option>
+                <option value="F">Fêmea</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="banhoEdit" class="form-label">Banho:</label>
+              <input type="date" class="form-control" id="banhoEdit" name="banhoEdit" [(ngModel)]="suinoSelecionado.banho">
+            </div>
+          </div>
+        </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="observacaoEdit" class="form-label">Observação:</label>
+              <input type="text" class="form-control" id="observacaoEdit" name="observacaoEdit" [(ngModel)]="suinoSelecionado.observacao">
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button type="button" class="btn bg-info" (click)="salvarEdicao()">Salvar</button>
+            <span style="margin: 0 5px;"></span>
+            <button type="button" class="btn btn-warning" (click)="voltarListaSuinos()">Voltar à lista de Suínos</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Formulário de Cadastro de Peso -->
+    <div *ngIf="!isEditFormVisible">
+      <h2>Cadastro de Peso</h2>
+      <form [formGroup]="pesoForm" (ngSubmit)="salvarPeso()">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="mb-3">
+              <label for="brincoAnimalPeso" class="form-label">Brinco do Animal:</label>
+              <input type="number" class="form-control" id="brincoAnimalPeso" formControlName="brincoAnimal">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="dataPesagem" class="form-label">Data da Pesagem:</label>
+              <input type="date" class="form-control" id="dataPesagem" formControlName="dataPesagem">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="pesoKg" class="form-label">Peso em Kg:</label>
+              <input type="number" class="form-control" id="pesoKg" formControlName="pesoKg">
+            </div>
+          </div>
+        </div>
+        <!-- Campos individuais para cada tipo de atividade -->
+        <div class="row">
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="vacinacaoRaiva" class="form-label">Vacinação Raiva:</label>
+              <input type="date" class="form-control" id="vacinacaoRaiva" formControlName="vacinacaoRaiva">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="vacinacaoRiniteAtrofica" class="form-label">Vacinação Rinite Atrófica:</label>
+              <input type="date" class="form-control" id="vacinacaoRiniteAtrofica" formControlName="vacinacaoRiniteAtrofica">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="banho" class="form-label">Banho:</label>
+              <input type="date" class="form-control" id="banho" formControlName="banho">
+            </div>
+          </div>
+        </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="observacao" class="form-label">Observação:</label>
+              <input type="text" class="form-control" id="observacao" formControlName="observacao">
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button type="submit" class="btn bg-info">Salvar Peso</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+  </div>
+
+</div>

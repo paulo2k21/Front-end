@@ -1,0 +1,84 @@
+<div class="container">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+    </a>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a routerLink="/dashboard" class="nav-link px-2 link-dark">Início</a></li>
+      <li><a routerLink="/cadastro-suino" class="nav-link px-2 link-dark">Cadastro de Suínos</a></li>
+      <li><a routerLink="/cadastro-sessao" class="nav-link px-2 link-dark">Cadastro de Sessão</a></li>
+      <li><a routerLink="/listagem-suinos" class="nav-link px-2 link-dark">Listar Suínos</a></li>
+      <li><a routerLink="/controle-peso" class="nav-link px-2 link-dark">Gráfico Animal</a></li>
+
+    </ul>
+
+    <div class="col-md-3 text-end">
+      <button type="button" class="btn bg-info me-2" (click)="logOut()">Sair</button>
+    </div>
+  </header>
+  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <div *ngIf="userName"></div>
+    <h2>Controle de Peso</h2>
+    <p class="chart-message">Passe o mouse sobre as barras para ver detalhes</p>
+    <div class="d-flex justify-content-center">
+      <div class="chart-container">
+        <!-- Gráfico de Pesagem -->
+        <div class="chart">
+          <h3>Pesagem</h3>
+          <div class="bar" *ngFor="let suino of suinosData">
+            <div class="bar-label">{{ suino.brincoAnimal }} - Brinco Animal</div>
+            <div class="bar-graph">
+              <div class="bar-fill" [style.width.%]="(getUltimoPeso(suino) / maxWeight) * 100">
+                <div class="bar-text">
+                  Última Data de Pesagem: {{ getUltimaDataPesagem(suino) | date:'dd/MM/yyyy' }} | Último Peso: {{ getUltimoPeso(suino) }} Kg
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gráfico de Vacinação Raiva -->
+        <div class="chart">
+          <h3>Vacinação Raiva</h3>
+          <div class="bar" *ngFor="let suino of suinosData">
+            <div class="bar-label">{{ suino.brincoAnimal }} - Brinco Animal</div>
+            <div class="bar-graph" *ngIf="suino.vacinacaoRaivaDate">
+              <div class="bar-fill" style="height: 1.5rem;">
+                <div class="bar-text">{{ suino.vacinacaoRaivaDate | date:'dd/MM/yyyy' }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gráfico de Banho -->
+        <div class="chart">
+          <h3>Banho</h3>
+          <div class="bar" *ngFor="let suino of suinosData">
+            <div class="bar-label">{{ suino.brincoAnimal }} - Brinco Animal</div>
+            <div class="bar-graph" *ngIf="suino.banhoDate">
+              <div class="bar-fill" style="height: 1.5rem;">
+                <div class="bar-text">{{ suino.banhoDate | date:'dd/MM/yyyy' }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gráfico de Vacinação Rinite Atrófica -->
+        <div class="chart">
+          <h3>Vacinação Rinite Atrófica</h3>
+          <div class="bar" *ngFor="let suino of suinosData">
+            <div class="bar-label">{{ suino.brincoAnimal }} - Brinco Animal</div>
+            <div class="bar-graph" *ngIf="suino.vacinacaoRiniteAtroficaDate">
+              <div class="bar-fill" style="height: 1.5rem;">
+                <div class="bar-text">{{ suino.vacinacaoRiniteAtroficaDate | date:'dd/MM/yyyy' }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+  </div>
+</div>
+</div>
