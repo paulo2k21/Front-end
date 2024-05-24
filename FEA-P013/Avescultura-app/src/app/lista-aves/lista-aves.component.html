@@ -1,0 +1,131 @@
+<div class="container">
+  <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+      <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+    </a>
+
+    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+      <li><a routerLink="/dashboard" class="nav-link px-2 link-dark">Início</a></li>
+      <li><a routerLink="/cadastro-aves" class="nav-link px-2 link-dark">Cadastro de Aves</a></li>
+      <li><a routerLink="/listagem-aves" class="nav-link px-2 link-dark">Listar Aves</a></li>
+
+    </ul>
+
+    <div class="col-md-3 text-end">
+      <button type="button" class="btn bg-info me-2" (click)="logOut()">Sair</button>
+    </div>
+  </header>
+  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <div *ngIf="userData">
+    </div>
+    <h2>Listagem de Aves</h2>
+
+    <div class="mb-3">
+      <label for="filtroAnilhaPai" class="form-label">Filtrar por anilha do pai:</label>
+      <input type="text" class="form-control" id="filtroAnilhaPai" [(ngModel)]="filtroAnilhaPai">
+    </div>
+
+    <div class="table-responsive">
+      <div class="scrollable-table">
+        <p class="text-center d-block d-sm-none">Para uma melhor visualização, gire o dispositivo ou utilize um dispositivo com uma tela maior.</p>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>Anilha do Animal</th>
+            <th>Anilha do Pai</th>
+            <th>Anilha da Mãe</th>
+            <th>Data de Nascimento</th>
+            <th>Data de Saída</th>
+            <th>Status</th>
+            <th>Sexo</th>
+            <br>
+            <br>
+            <br>
+            <th>Ações</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let ave of aves | filterAves:filtroAnilhaPai">
+            <td>{{ ave.anilhaAnimal }}</td>
+            <td>{{ ave.anilhaPai }}</td>
+            <td>{{ ave.anilhaMae }}</td>
+            <td>{{ ave.dataNascimento | date }}</td>
+            <td>{{ ave.dataSaida | date }}</td>
+            <td>{{ ave.status }}</td>
+            <td>{{ ave.sexo }}</td>
+            <td>
+              <ul>
+                <li *ngFor="let peso of ave.pesos">{{ peso.pesoKg }}</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li *ngFor="let peso of ave.pesos">{{ peso.dataPesagem | date }}</li>
+              </ul>
+            </td>
+            <td>
+              <button class="btn bg-info me-2" (click)="editarAve(ave)">Editar</button>
+              <button class="btn btn-danger" (click)="deletarAve(ave)">Deletar</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Formulário de Edição -->
+    <div *ngIf="aveSelecionada">
+      <h2>Editar Ave</h2>
+      <form>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="anilhaAnimalEdit" class="form-label">Anilha do animal:</label>
+              <input type="number" class="form-control" id="anilhaAnimalEdit" name="anilhaAnimalEdit" [(ngModel)]="aveSelecionada.anilhaAnimal">
+            </div>
+            <div class="mb-3">
+              <label for="anilhaPaiEdit" class="form-label">Anilha do pai:</label>
+              <input type="number" class="form-control" id="anilhaPaiEdit" name="anilhaPaiEdit" [(ngModel)]="aveSelecionada.anilhaPai">
+            </div>
+            <div class="mb-3">
+              <label for="anilhaMaeEdit" class="form-label">Anilha da mãe:</label>
+              <input type="number" class="form-control" id="anilhaMaeEdit" name="anilhaMaeEdit" [(ngModel)]="aveSelecionada.anilhaMae">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="dataNascimentoEdit" class="form-label">Data de Nascimento:</label>
+              <input type="date" class="form-control" id="dataNascimentoEdit" name="dataNascimentoEdit" [(ngModel)]="aveSelecionada.dataNascimento">
+            </div>
+            <div class="mb-3">
+              <label for="dataSaidaEdit" class="form-label">Data da saída:</label>
+              <input type="date" class="form-control" id="dataSaidaEdit" name="dataSaidaEdit" [(ngModel)]="aveSelecionada.dataSaida">
+            </div>
+            <div class="mb-3">
+              <label for="statusEdit" class="form-label">Status:</label>
+              <select id="statusEdit" class="form-select" name="statusEdit" [(ngModel)]="aveSelecionada.status">
+                <option value="ativo">Ativo</option>
+                <option value="vendido">Vendido</option>
+                <option value="morto">Morto</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="sexoEdit" class="form-label">Sexo:</label>
+              <select id="sexoEdit" class="form-select" name="sexoEdit" [(ngModel)]="aveSelecionada.sexo">
+                <option value="M">Macho</option>
+                <option value="F">Fêmea</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button type="button" class="btn bg-info" (click)="salvarEdicao()">Salvar</button>
+            <span style="margin: 0 5px;"></span>
+            <button type="button" class="btn btn-warning" (click)="voltarListaAves()">Voltar à lista de Aves</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
